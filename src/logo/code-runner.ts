@@ -1,15 +1,12 @@
 import { GraphicsMessage } from "./interfaces/graphics-message";
 
-export function runCode(code: string): GraphicsMessage[] {
-    const graphicsMessages: GraphicsMessage[] = [];
-
+export function runCode(code: string, sendMessage: (message: GraphicsMessage) => void): void {
     if (!code) {
-        return graphicsMessages;
+        console.log('No code to run');
+        return;
     }
 
     for (var i = 0; i < 50; i++) {
-         graphicsMessages.push({ command: 'drawPoint', x: i, y: i });
+         sendMessage({ command: 'drawPoint', x: i, y: i });
     }
-
-    return  graphicsMessages;
 }

@@ -69,10 +69,13 @@ export function activate(context: vscode.ExtensionContext) {
 				return;
 			}
 			const codeToRun = vscode.window.activeTextEditor?.document.getText() || '';
-			const graphicsMessages = runCode(codeToRun);
-			for (const graphicsMessage of graphicsMessages) {
+			runCode(codeToRun, (graphicsMessage) => {
+				if (!currentPanel) {
+					return;
+				}
+	
 				currentPanel.webview.postMessage(graphicsMessage);
-			}
+			});
 		})
 	);
 }
