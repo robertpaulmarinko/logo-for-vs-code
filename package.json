@@ -10,14 +10,18 @@
 		"Other"
 	],
 	"activationEvents": [
-        "onCommand:logo-for-vs-code.logoRunner"
+        "onCommand:logo-for-vs-code.open"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
 		"commands": [
 			{
-				"command": "logo-for-vs-code.logoRunner",
-				"title": "Logo Runner"
+				"command": "logo-for-vs-code.open",
+				"title": "Logo Runner: Open"
+			},
+			{
+				"command": "logo-for-vs-code.run",
+				"title": "Logo Runner: Run"
 			}
 		]
 	},

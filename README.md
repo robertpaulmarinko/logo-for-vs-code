@@ -1,6 +1,6 @@
-# logo-for-vs-code README
+# Logo for VS Code README
 
-This is the README for your extension "logo-for-vs-code". After writing up a brief description, we recommend including the following sections.
+Run Logo programs in VS Code.
 
 ## Features
 
