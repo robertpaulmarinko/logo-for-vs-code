@@ -87,8 +87,6 @@ suite('code-parser', () => {
         assert.strictEqual((codeLines[0].tokens[2].token[2] as Token).token.length, 2, '3rd tested token has 2 tokens');
         assert.strictEqual(((codeLines[0].tokens[2].token[2] as Token).token[0] as Token).token, 'right', '3rd tested token, 1st token is correct');
         assert.strictEqual(((codeLines[0].tokens[2].token[2] as Token).token[1] as Token).token, '90', '3rd tested token, 2nd token is correct');
-        
-        
 	});
 
 });

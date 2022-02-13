@@ -71,9 +71,10 @@ export function activate(context: vscode.ExtensionContext) {
 			const codeToRun = vscode.window.activeTextEditor?.document.getText() || '';
 			runCode(codeToRun, (graphicsMessage) => {
 				if (!currentPanel) {
+					console.log('No currentPane;');
 					return;
 				}
-	
+				console.log('Got graphicMessage', graphicsMessage);
 				currentPanel.webview.postMessage(graphicsMessage);
 			});
 		})
@@ -84,7 +85,7 @@ export function activate(context: vscode.ExtensionContext) {
 export function deactivate() { }
 
 function getWebviewContent() {
-	return `<!DOCTYPE html>
+	return /*html*/`<!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
@@ -93,6 +94,7 @@ function getWebviewContent() {
 	</head>
   	<script>
 	  	function initMessageHandler() {
+			console.log('in initMessageHandler');
 			var canvas = document.getElementById('canvas');
 			var ctx = null;
 			if (canvas.getContext) {
@@ -100,7 +102,11 @@ function getWebviewContent() {
 				console.log('got context');
 			}
 			window.addEventListener('message', event => {
-				if (!ctx) return;
+				console.log('in window.addEventListener', event);
+				if (!ctx) {
+					console.log('No context')
+					return;
+				}
 
 				const message = event.data; // The JSON data our extension sent
 				switch (message.command) {
